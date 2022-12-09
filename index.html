@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <title>Project Tracker</title>
+</head>
+<body>
+   <div class="project-form-cont">
+    <div class="proj-form-title">My Projects</div>
+    <form action="" data-project-form>
+        <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
+        <button class="new-list-add-btn"data-project-form-add>Add</button>
+    </form>
+    <div class="current-projects">
+        <div class="projects" data-current-projects></div>
+    </div>
+   </div> 
+   <div id="todo-cont">
+    <div class="todo-header">
+        <div class="todo-cont-title" data-todo-header-title></div>
+        <div class="todos-remaining" data-todos-remaining></div>
+    </div>
+    <div class="" id="current-tasks">
+        <div class="todos" data-current-todos></div>
+    </div>
+    <div class="new-todo-creater">
+        <form action="">
+            <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
+            <button class="new-todo-add-btn" data-todo-form-input>Add</button>
+        </form>
+        <div class="delete-container">
+            <button class="remove-finished-todos" data-remove-finished-todos>Remove Finished To-Dos</button>
+            <button class="remove-project" data-remove-project>Remove Project</button>
+        </div>
+    </div>
+   </div>
+
+   <template id="todo-template">
+    <div class="todo">
+        <input type="checkbox"/>
+        <label>
+            <span class="custom-checkbox"></span>
+        </label>
+    </div>
+   </template>
+</body>
+</html>
