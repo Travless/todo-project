@@ -1,0 +1,8 @@
+.page-cont {
+    display: flex;
+    flex-direction: row;
+};
+
+.todo-cont-title {
+    font-weight: bold;
+}
