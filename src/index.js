@@ -2,14 +2,13 @@ import './style.css';
 import { Project, ToDo } from './classes';
 
 const projectFormInput = document.querySelector('[data-project-form-input]');
-const projectFormAdd = document.querySelector('[data-project-form-add]');
+const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
 const toDoCont = document.getElementById('todo-cont');
 const toDoHeaderTitle = document.querySelector('[data-todo-header-title]');
-const toDosRemaining = document.querySelector('[data-todos-remaining]');
 const toDosCurrent = document.querySelector('[data-current-todos]');
 const toDoFormInput = document.querySelector('[data-todo-form-input]');
-const toDoFormAdd = document.querySelector('[data-todo-form-add]');
+const toDoForm = document.querySelector('[data-new-todo-form]');
 const toDoRemoveFinishedBtn = document.querySelector('[data-remove-finished-todos]');
 const projectRemoveBtn = document.querySelector('[data-remove-project]');
 const toDoTemplate = document.getElementById('todo-template');
@@ -32,12 +31,13 @@ toDosCurrent.addEventListener('click', e => {
     if(e.target.tagName.toLowerCase() === 'input'){
         const selectedProject = projects.find(project => project.id === selectedProjectId);
         const selectedToDo = selectedProject.toDos.find(toDo => toDo.id === e.target.id);
+        console.log(selectedToDo);
         selectedToDo.complete = e.target.checked;
-        save()
+        save();
     }
 })
 
-projectFormAdd.addEventListener('click', e => {
+projectForm.addEventListener('submit', e => {
     e.preventDefault()
 
     const projName = projectFormInput.value;
@@ -52,7 +52,7 @@ projectFormAdd.addEventListener('click', e => {
 });
 
 
-toDoFormAdd.addEventListener('click', e => {
+toDoForm.addEventListener('submit', e => {
     e.preventDefault();
 
     let toDoTitle = toDoFormInput.value;
@@ -120,7 +120,7 @@ const loadProjects = () => {
 const loadToDo = (selectedProject) => {
     selectedProject.toDos.forEach(toDo => {
         const toDoElement = document.importNode(toDoTemplate.content, true);
-        const checkbox = document.querySelector('[data-todo-checkbox]')
+        const checkbox = toDoElement.querySelector('input');
         checkbox.id = toDo.id;
         checkbox.checked = toDo.complete;
         const label = toDoElement.querySelector('label');
