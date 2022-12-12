@@ -7,8 +7,10 @@ export class Project {
 }
 
 export class ToDo {
-    constructor (name){
+    constructor (name, dueDate, priority){
         this.name = name
+        this.dueDate = dueDate;
+        this.priority = priority;
         this.id = Date().toString()
         this.complete = false
     }
