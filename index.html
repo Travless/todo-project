@@ -22,7 +22,6 @@
            <div id="todo-cont">
             <div class="todo-header">
                 <div class="todo-cont-title" data-todo-header-title></div>
-                <div class="todos-remaining" data-todos-remaining></div>
             </div>
             <div class="" id="current-tasks">
                 <div class="todos" data-current-todos></div>
@@ -30,6 +29,10 @@
             <div class="new-todo-creater">
                 <form action="" data-new-todo-form>
                     <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
+                    <label for="data-todo-form-duedate">Due Date</label>
+                    <input type="date" class="due-date" data-todo-form-duedate/>
+                    <input type="checkbox" data-todo-form-priority/>
+                    <label for="data-todo-form-priority">High Priority?</label>
                     <button class="new-todo-add-btn" data-todo-form-add>Add</button>
                 </form>
                 <div class="delete-container">
@@ -44,8 +47,9 @@
     <div class="todo">
         <input type="checkbox" data-todo-checkbox/>
         <label>
-            <!-- <span class="custom-checkbox"></span> -->
         </label>
+        <div class="todo-duedate" data-todo-date></div>
+        <!-- <div class="todo-prioritty" data-todo-priority></div> -->
     </div>
    </template>
 </body>
