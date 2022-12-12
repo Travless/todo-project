@@ -9,16 +9,27 @@
 </head>
 <body>
     <div class="page-cont">
-        <div class="project-form-cont">
-            <div class="proj-form-title">My Projects</div>
-            <form action="" data-project-form>
-                <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
-                <button class="new-list-add-btn"data-project-form-add>Add</button>
-            </form>
+        <div class="sidebar">
+            <div class="project-form-cont">
+                <div class="proj-form-title">My Projects</div>
+                <button data-project-new>Add New Project</button>
+                <form action="" data-project-form hidden>
+                    <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
+                    <button class="new-list-add-btn"data-project-form-add>Add</button>
+                </form>
+               </div> 
             <div class="current-projects">
                 <ul class="projects" data-current-projects></ul>
             </div>
-           </div> 
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-timeframes">
+                <ul class="sidebar-timeframe-title">
+                    <li class="today">Today</li>
+                    <li class="this-week">This Week</li>
+                    <li class="this-month">This Month</li>
+                </ul>
+            </div>
+        </div>
            <div id="todo-cont">
             <div class="todo-header">
                 <div class="todo-cont-title" data-todo-header-title></div>
@@ -31,7 +42,7 @@
                     <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
                     <label for="data-todo-form-duedate">Due Date</label>
                     <input type="date" class="due-date" data-todo-form-duedate/>
-                    <input type="checkbox" data-todo-form-priority/>
+                    <input type="checkbox" id="data-todo-form-priority" checked="on" data-todo-form-priority/>
                     <label for="data-todo-form-priority">High Priority?</label>
                     <button class="new-todo-add-btn" data-todo-form-add>Add</button>
                 </form>

@@ -2,8 +2,8 @@ import './style.css';
 import { Project, ToDo } from './classes';
 import { format } from 'date-fns';
 
+const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
-const projectFormDueDate = document.querySelector('[data-project-form-date]')
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
 const toDoCont = document.getElementById('todo-cont');
@@ -11,7 +11,7 @@ const toDoHeaderTitle = document.querySelector('[data-todo-header-title]');
 const toDosCurrent = document.querySelector('[data-current-todos]');
 const toDoFormInput = document.querySelector('[data-todo-form-input]');
 const toDoFormDueDate = document.querySelector('[data-todo-form-duedate]');
-const toDoFormPriority = document.querySelector('[data-todo-form-priority]')
+const toDoFormPriority = document.querySelector('[data-todo-form-priority]');
 const toDoForm = document.querySelector('[data-new-todo-form]');
 const toDoRemoveFinishedBtn = document.querySelector('[data-remove-finished-todos]');
 const projectRemoveBtn = document.querySelector('[data-remove-project]');
@@ -41,6 +41,10 @@ toDosCurrent.addEventListener('click', e => {
     }
 })
 
+projectNewProjBtn.addEventListener('click', e => {
+    projectForm.hidden = false;
+})
+
 projectForm.addEventListener('submit', e => {
     e.preventDefault()
 
@@ -51,6 +55,7 @@ projectForm.addEventListener('submit', e => {
     const newProj = new Project(projName);
     projectFormInput.value = null;
     projects.push(newProj);
+    projectForm.hidden = true;
     console.log(projects);
     saveAndLoad();
 });
@@ -61,7 +66,7 @@ toDoForm.addEventListener('submit', e => {
 
     let toDoTitle = toDoFormInput.value;
     let toDoDueDate = format(new Date(toDoFormDueDate.value), 'MM/dd/yyyy');
-    let toDoPriority = toDoFormPriority.value;
+    let toDoPriority = toDoFormPriority.checked;
     if(toDoTitle == null || toDoTitle === ''){
         return;
     }
@@ -135,7 +140,7 @@ const loadToDo = (selectedProject) => {
         checkbox.checked = toDo.complete;
         const label = toDoElement.querySelector('label');
         label.htmlFor = toDo.id;
-        if(toDo.priority === 'on'){
+        if(toDo.priority === true){
             label.style.color = 'red';
             toDoElementDueDate.style.color = 'red';
         };
