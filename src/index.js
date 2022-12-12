@@ -1,11 +1,14 @@
 import './style.css';
 import { Project, ToDo } from './classes';
-import { format } from 'date-fns';
+import { format, isToday, parseISO } from 'date-fns';
 
+//  Project QSs
 const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
+
+// To DO QSs
 const toDoCont = document.getElementById('todo-cont');
 const toDoHeaderTitle = document.querySelector('[data-todo-header-title]');
 const toDosCurrent = document.querySelector('[data-current-todos]');
@@ -13,9 +16,19 @@ const toDoFormInput = document.querySelector('[data-todo-form-input]');
 const toDoFormDueDate = document.querySelector('[data-todo-form-duedate]');
 const toDoFormPriority = document.querySelector('[data-todo-form-priority]');
 const toDoForm = document.querySelector('[data-new-todo-form]');
+
+// // Date Sort QSs
+const toDoDateToday = document.querySelector('[data-todos-today]');
+const toDoDateThisWeek = document.querySelector('[data-todos-this-week]');
+const toDoDateThisMonth = document.querySelector('[data-todos-this-month]');
+
+// Delete Butttons QSs
 const toDoRemoveFinishedBtn = document.querySelector('[data-remove-finished-todos]');
 const projectRemoveBtn = document.querySelector('[data-remove-project]');
+
+// To Do Template
 const toDoTemplate = document.getElementById('todo-template');
+
 
 const LOCAL_STORAGE_PROJECT_KEY = 'todo.projects';
 const LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY = 'todo.selectedProjectId';
@@ -23,6 +36,7 @@ const LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY = 'todo.selectedProjectId';
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [];
 let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY);
 
+// Current Project and To Dos Event Listeners
 
 projectCurrent.addEventListener('click', e => {
     if(e.target.tagName.toLowerCase() === 'li'){
@@ -45,6 +59,8 @@ projectNewProjBtn.addEventListener('click', e => {
     projectForm.hidden = false;
 })
 
+// Form Event Listeners
+
 projectForm.addEventListener('submit', e => {
     e.preventDefault()
 
@@ -59,7 +75,6 @@ projectForm.addEventListener('submit', e => {
     console.log(projects);
     saveAndLoad();
 });
-
 
 toDoForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -77,6 +92,15 @@ toDoForm.addEventListener('submit', e => {
     saveAndLoad();
     console.log(selectedProject);
 })
+
+// Date To Do Sort Event Listeners
+
+// toDoDateToday.addEventListener('click', e => {
+//     let dueDateToday = projects.forEach(project => {
+//         project.toDos.find(toDo => toDo.dueDate === format(new Date(), 'MM/dd/yyyy'));
+//     })
+//     console.log(dueDateToday);
+// })
 
 toDoRemoveFinishedBtn.addEventListener('click', e => {
     const selectedProject = projects.find(project => project.id === selectedProjectId);
