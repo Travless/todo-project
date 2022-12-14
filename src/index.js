@@ -1,6 +1,6 @@
 import './style.css';
 import { Project, ToDo } from './classes';
-import { format, isToday, parseISO } from 'date-fns';
+import { format, isToday, isThisWeek, parseISO } from 'date-fns';
 
 //  Project QSs
 const projectNewProjBtn = document.querySelector('[data-project-new]');
@@ -90,17 +90,29 @@ toDoForm.addEventListener('submit', e => {
     const selectedProject = projects.find(project => project.id === selectedProjectId);
     selectedProject.toDos.push(newToDo);
     saveAndLoad();
-    console.log(selectedProject);
 })
 
 // Date To Do Sort Event Listeners
 
-// toDoDateToday.addEventListener('click', e => {
-//     let dueDateToday = projects.forEach(project => {
-//         project.toDos.find(toDo => toDo.dueDate === format(new Date(), 'MM/dd/yyyy'));
-//     })
-//     console.log(dueDateToday);
-// })
+toDoDateToday.addEventListener('click', e => {
+    let currentToDos = []
+    let currentDate = format(new Date(), 'MM/dd/yyyy');
+    let size = Object.keys(projects).length;
+    console.log(size);
+    projects.forEach(project => {
+        
+    })
+    // projects.forEach(project => {
+    //     console.log(project);
+    //     console.log(project.toDos);
+    //     currentToDos.push(project.toDos);
+    //     return currentToDos;
+    // })
+    // for(let i = 0; i < currentToDos.length; i++){
+    //     console.log(currentToDos[i]);
+    // }
+});
+// Delete Buttons Event Listeners
 
 toDoRemoveFinishedBtn.addEventListener('click', e => {
     const selectedProject = projects.find(project => project.id === selectedProjectId);
@@ -178,5 +190,10 @@ const clearElements = (element) => {
         element.removeChild(element.firstChild);
     }
 }
+
+// const filterToday = (toDos) => {
+//     let currentDate = format(new Date(), 'MM/dd/yyyy');
+//     return toDos.dueDate === currentDate;
+// }
 
 load();
