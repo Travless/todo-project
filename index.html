@@ -8,29 +8,31 @@
     <title>Project Tracker</title>
 </head>
 <body>
-    <div class="page-cont">
-        <div class="sidebar">
+    <!-- <div class="page-cont" id="page-cont"> -->
+        <div class="sidebar" id="sidebar">
             <div class="project-form-cont">
-                <div class="proj-form-title">My Projects</div>
-                <button data-project-new>Add New Project</button>
+                <div id="proj-form-title-cont">
+                    <div class="proj-form-title">My Projects</div>
+                </div>
                 <form action="" data-project-form hidden>
                     <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
                     <button class="new-list-add-btn"data-project-form-add>Add</button>
                 </form>
                </div> 
             <div class="current-projects">
-                <ul class="projects" data-current-projects></ul>
+                <ul class="projects" id="sidebar-current-proj" data-current-projects></ul>
             </div>
+            <button id="project-new-btn" data-project-new>Add New Project</button>
             <div class="sidebar-divider"></div>
             <div class="sidebar-timeframes">
-                <ul class="sidebar-timeframe-title">
+                <ul class="sidebar-timeframe-title" id="sidebar-timeframes">
                     <li class="today" data-todos-today>Today</li>
                     <li class="this-week" data-todos-this-week>This Week</li>
                     <li class="this-month" data-todos-this-month>This Month</li>
                 </ul>
             </div>
         </div>
-           <div id="todo-cont">
+        <div id="todo-cont">
             <div class="todo-header">
                 <div class="todo-cont-title" data-todo-header-title></div>
             </div>
@@ -51,8 +53,8 @@
                     <button class="remove-project" data-remove-project>Remove Project</button>
                 </div>
             </div>
-           </div>
-    </div>
+        </div>
+    <!-- </div> -->
 
    <template id="todo-template">
     <div class="todo">
