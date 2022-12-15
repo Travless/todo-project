@@ -51,6 +51,7 @@ projectCurrent.addEventListener('click', e => {
 toDosCurrent.addEventListener('click', e => {
     if(e.target.tagName.toLowerCase() === 'input'){
         const selectedProject = projects.find(project => project.id === selectedProjectId);
+        selectedProject.style.backgroundColor = 'red';
         const selectedToDo = selectedProject.toDos.find(toDo => toDo.id === e.target.id);
         console.log(selectedToDo);
         selectedToDo.complete = e.target.checked;
