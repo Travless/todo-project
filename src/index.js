@@ -1,6 +1,6 @@
 import './style.css';
 import { Project, ToDo } from './classes';
-import { format, isToday, isThisWeek, parseISO } from 'date-fns';
+import { format, isThisWeek, isThisMonth, parseISO } from 'date-fns';
 
 //  Project QSs
 const projectNewProjBtn = document.querySelector('[data-project-new]');
@@ -40,6 +40,8 @@ let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_K
 // Current Project and To Dos Event Listeners
 
 projectCurrent.addEventListener('click', e => {
+    toDoRemoveFinishedBtn.hidden = false;
+    projectRemoveBtn.hidden = false;
     if(e.target.tagName.toLowerCase() === 'li'){
         selectedProjectId = e.target.dataset.projectId;
         saveAndLoad();
@@ -73,7 +75,6 @@ projectForm.addEventListener('submit', e => {
     projectFormInput.value = null;
     projects.push(newProj);
     projectForm.hidden = true;
-    console.log(projects);
     saveAndLoad();
 });
 
@@ -91,6 +92,7 @@ toDoForm.addEventListener('submit', e => {
     const newToDo = new ToDo(toDoTitle, toDoDueDate, toDoPriority, projName);
     toDoFormInput.value = null;
     selectedProject.toDos.push(newToDo);
+    toDoForm.hidden = true;
     saveAndLoad();
 })
 
@@ -98,6 +100,7 @@ toDoForm.addEventListener('submit', e => {
 
 toDoDateToday.addEventListener('click', e => {
     toDosCurrent.innerHTML = '';
+    hideButtonUI();
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
     const toDosCont = []
     const todayToDos = []
@@ -118,6 +121,7 @@ toDoDateToday.addEventListener('click', e => {
 
 toDoDateThisWeek.addEventListener('click', e => {
     toDosCurrent.innerHTML = '';
+
     toDoHeaderTitle.innerText = toDoDateThisWeek.innerText;
     const toDosCont = []
     const thisWeekToDos = []
@@ -132,8 +136,24 @@ toDoDateThisWeek.addEventListener('click', e => {
             thisWeekToDos.push(toDo);
         }
     })
-    // console.log(thisWeekToDos);
     loadToDosByDate(thisWeekToDos);
+});
+
+toDoDateThisMonth.addEventListener('click', e => {
+    toDosCurrent.innerHTML = '';
+    toDoHeaderTitle.innerText = toDoDateThisMonth.innerText;
+    const toDosCont = []
+    const thisMonthToDos = []
+    projects.forEach(project => {
+        toDosCont.push(project.toDos);
+    })
+    const currentToDos = toDosCont.flat();
+    currentToDos.forEach(toDo => {
+        if(isThisMonth(new Date(toDo.dueDate)) === true){
+            thisMonthToDos.push(toDo);
+        }
+    })
+    loadToDosByDate(thisMonthToDos);
 })
 
 // Delete Buttons Event Listeners
@@ -149,6 +169,9 @@ projectRemoveBtn.addEventListener('click', e => {
     selectedProjectId = null;
     saveAndLoad();
 })
+
+
+// Functions
 
 const saveAndLoad = () => {
     save();
@@ -215,18 +238,13 @@ const loadToDosByDate = (toDos) => {
         const dateCheckbox = toDoDateElement.querySelector('[data-date-todo-checkbox]');
         const toDoDateElementDueDate = toDoDateElement.querySelector('[data-date-todo-date]');
         const toDoDateElementProject = toDoDateElement.querySelector('[data-date-todo-project]');
-        const idValue = toDo.id;
         toDoDateElementDueDate.id = toDo.id;
         toDoDateElementDueDate.innerText = toDo.dueDate;
         dateCheckbox.id = toDo.id;
         dateCheckbox.checked = toDo.complete;
         const dateLabel = toDoDateElement.querySelector('label');
         dateLabel.htmlFor = toDo.id;
-        const projName = projects.forEach(project => {
-            if (project.id === idValue){
-                return project.name;
-            }
-        })
+        toDoDateElementProject.innerText = toDo.parent;
         if(toDo.priority === true){
             dateLabel.style.color = 'red';
             toDoDateElementDueDate.style.color = 'red';
@@ -234,7 +252,14 @@ const loadToDosByDate = (toDos) => {
         }
         dateLabel.append(toDo.name);
         toDosCurrent.appendChild(toDoDateElement);
-        console.log(projName);
+        dateCheckbox.addEventListener('click', e => {
+            toDoRemoveFinishedBtn.hidden = false;
+            toDoRemoveFinishedBtn.addEventListener('click', e => {
+                const selectedProject = projects.find(project => project.id === selectedProjectId);
+                selectedProject.toDos = selectedProject.toDos.filter(toDo => !toDo.complete);
+                saveAndLoad();
+            })
+        })
     })
 }
 
@@ -246,9 +271,10 @@ const clearElements = (element) => {
     }
 }
 
-// const filterToday = (toDos) => {
-//     let currentDate = format(new Date(), 'MM/dd/yyyy');
-//     return toDos.dueDate === currentDate;
-// }
+const hideButtonUI = () => {
+    toDoRemoveFinishedBtn.hidden = true;
+    projectRemoveBtn.hidden = true;
+    toDoForm.hidden = true;
+}
 
 load();
