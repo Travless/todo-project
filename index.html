@@ -10,13 +10,17 @@
 <body>
     <!-- <div class="page-cont" id="page-cont"> -->
         <div class="sidebar" id="sidebar">
+            <div id="page-name-cont">
+                <div id="page-name">Project Tracker</div>
+            </div>
             <div class="project-form-cont">
                 <div id="proj-form-title-cont">
                     <div class="proj-form-title">My Projects</div>
                 </div>
                 <form action="" data-project-form hidden>
                     <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
-                    <button class="new-list-add-btn"data-project-form-add>Add</button>
+                    <button class="new-project-add-btn"data-project-form-add>Add</button>
+                    <button class="new-project-cancel" data-project-form-cancel>Cancel</button>
                 </form>
                </div> 
             <div class="current-projects">
@@ -25,6 +29,7 @@
             <button id="project-new-btn" data-project-new>Add New Project</button>
             <div class="sidebar-divider"></div>
             <div class="sidebar-timeframes">
+                <div class="" id="timeframe-title">Sort</div>
                 <ul class="sidebar-timeframe-title" id="sidebar-timeframes">
                     <li class="today" data-todos-today>Today</li>
                     <li class="this-week" data-todos-this-week>This Week</li>
