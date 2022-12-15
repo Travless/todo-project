@@ -40,20 +40,32 @@ body {
     align-items: center;
 }
 
-#sidebar-current-proj,
-#sidebar-timeframes {
-    list-style-type: none;
+#sidebar-current-proj {
+    list-style-type: circle;
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
-#proj-form-title-cont {
+#page-name-cont {
     width: 20vw;
     height: auto;
     background-color: #365aff;
 }
 
+#proj-form-title-cont {
+    background-color: #6983b3;
+    width: 20vw;
+    height: auto;
+}
+
 .proj-form-title {
+    font-family: 'button-bold';
+    font-size: 120%;
+    color: white;
+}
+
+#page-name {
     padding: 10px;
     font-size: 150%;
     text-align: center;
@@ -86,4 +98,12 @@ body {
     font-family: 'button-bold';
     padding: 5px;
     font-size: 120%;
+    color: white;
 }
+
+#project-name {
+    width: 10vw;
+    height: auto;
+    border-radius: 5px;
+}
+

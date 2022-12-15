@@ -7,6 +7,7 @@ const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
+const projectCancel = document.querySelector('[data-project-form-cancel]');
 
 // To DO QSs
 const toDoCont = document.getElementById('todo-cont');
@@ -78,6 +79,10 @@ projectForm.addEventListener('submit', e => {
     projectForm.hidden = true;
     saveAndLoad();
 });
+
+projectCancel.addEventListener('click', e => {
+    projectForm.hidden = true;
+})
 
 toDoForm.addEventListener('submit', e => {
     e.preventDefault();
