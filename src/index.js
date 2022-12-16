@@ -7,7 +7,6 @@ const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
-const projectCancel = document.querySelector('[data-project-form-cancel]');
 
 // To DO QSs
 const toDoCont = document.getElementById('todo-cont');
@@ -52,7 +51,6 @@ projectCurrent.addEventListener('click', e => {
 toDosCurrent.addEventListener('click', e => {
     if(e.target.tagName.toLowerCase() === 'input'){
         const selectedProject = projects.find(project => project.id === selectedProjectId);
-        selectedProject.style.backgroundColor = 'red';
         const selectedToDo = selectedProject.toDos.find(toDo => toDo.id === e.target.id);
         console.log(selectedToDo);
         selectedToDo.complete = e.target.checked;
@@ -80,10 +78,6 @@ projectForm.addEventListener('submit', e => {
     saveAndLoad();
 });
 
-projectCancel.addEventListener('click', e => {
-    projectForm.hidden = true;
-})
-
 toDoForm.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -108,6 +102,13 @@ toDoDateToday.addEventListener('click', e => {
     toDosCurrent.innerHTML = '';
     hideButtonUI();
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
+    if (toDoHeaderTitle.innerText = toDoDateToday.innerText){
+        toDoDateToday.classList.add('selected-project');
+        // classCheck(toDoDateToday);
+    }
+    console.log(toDoDateToday.classList.contains('selected-project'));
+    const projItems = document.getElementsByClassName('project-menu-item');
+    console.log(projItems);
     const toDosCont = []
     const todayToDos = []
     const currentDate = format(new Date(), 'MM/dd/yyyy');
@@ -121,7 +122,7 @@ toDoDateToday.addEventListener('click', e => {
         }
     })
     loadToDosByDate(todayToDos);
-    console.log(projects)
+    projItems.style.backgroundColor = '';
     
 });
 
@@ -195,7 +196,7 @@ const load = () => {
     let selectedProject = projects.find(project => project.id === selectedProjectId);
     if (selectedProjectId == null){
         toDoCont.style.display = 'none';
-    } else {
+    } else {  
         toDoCont.style.display = '';
         toDoHeaderTitle.innerText = selectedProject.name;
         clearElements(toDosCurrent);
@@ -281,6 +282,12 @@ const hideButtonUI = () => {
     toDoRemoveFinishedBtn.hidden = true;
     projectRemoveBtn.hidden = true;
     toDoForm.hidden = true;
+}
+
+const classCheck = (element) => {
+    if (element.classList.contains('selected-project') === true){
+        projMenu.classList.remove('selected-project');
+    }
 }
 
 load();
