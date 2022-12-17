@@ -40,44 +40,72 @@
             </div>
         </div>
         <div id="todo-cont">
-            <div class="todo-header">
-                <div class="todo-cont-title" data-todo-header-title></div>
-            </div>
-            <div class="" id="current-tasks">
-                <div class="todos" data-current-todos></div>
-            </div>
-            <div class="new-todo-creater">
-                <form action="" data-new-todo-form>
-                    <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
-                    <label for="data-todo-form-duedate">Due Date</label>
-                    <input type="date" class="due-date" data-todo-form-duedate/>
-                    <input type="checkbox" id="data-todo-form-priority" checked="on" data-todo-form-priority/>
-                    <label for="data-todo-form-priority">High Priority?</label>
-                    <button class="new-todo-add-btn" data-todo-form-add>Add</button>
-                </form>
-                <div class="delete-container">
-                    <button class="remove-finished-todos" data-remove-finished-todos>Remove Finished To-Dos</button>
-                    <button class="remove-project" data-remove-project>Remove Project</button>
+            <!-- <div class="todo-page-style"> -->
+                <div class="todo-header">
+                    <div class="todo-cont-title" data-todo-header-title></div>
                 </div>
-            </div>
+                <div id="todo-layout">
+                    <div id="complete-cont">
+                        <div id="complete">Complete</div>
+                    </div>
+                    <div id="todo-name-layout-cont">
+                        <div id="todo-name-layout">To-Do</div>
+                    </div>
+                    <div id="duedate-layout-cont">
+                        <div id="duedate-layout">Due Date</div>
+                    </div>
+                </div>
+                <div id="current-tasks">
+                    <div class="todos" data-current-todos></div>
+                </div>
+                <button class="add-new-todo-btn" data-add-todo-btn>Add To-Do</button>
+                <div class="new-todo-creater" data-todo-form-create hidden>
+                    <form action="" data-new-todo-form>
+                        <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
+                        <label for="data-todo-form-duedate">Due Date</label>
+                        <input type="date" class="due-date" data-todo-form-duedate/>
+                        <input type="checkbox" id="data-todo-form-priority" checked="on" data-todo-form-priority/>
+                        <label for="data-todo-form-priority">High Priority?</label>
+                        <button class="new-todo-add-btn" data-todo-form-add>Add</button>
+                    </form>
+                    <div class="delete-container">
+                        <button class="remove-finished-todos" data-remove-finished-todos>Remove Finished To-Dos</button>
+                        <button class="remove-project" data-remove-project>Remove Project</button>
+                    </div>
+                </div>
+            <!-- </div> -->
         </div>
     <!-- </div> -->
 
    <template id="todo-template">
     <div class="todo">
-        <input type="checkbox" data-todo-checkbox/>
-        <label>
-        </label>
-        <div class="todo-duedate" data-todo-date></div>
+        <div class="todo-check-cont">
+            <input class="todo-check-layout" type="checkbox" data-todo-checkbox/>
+        </div>
+        <div class="todo-name-layout-cont">
+            <label class="todo-name-layout">
+            </label>
+        </div>
+        <div class="todo-duedate-cont">
+            <div class="todo-duedate-layout" data-todo-date></div>
+        </div>
     </div>
    </template>
    <template id="todo-date-template">
     <div class="todo">
-        <input type="checkbox" data-date-todo-checkbox/>
-        <label>
-        </label>
-        <div class="todo-duedate" data-date-todo-date></div>
-        <div class="todo-project" data-date-todo-project></div>
+        <div class="todo-check-date-cont">
+            <input type="checkbox" data-date-todo-checkbox/>
+        </div>
+        <div class="todo-name-layout-date-cont">
+            <label class="todo-name-layout">
+            </label>
+        </div>
+        <div class="todo-duedate-date-cont">
+            <div class="todo-duedate" data-date-todo-date></div>
+        </div>
+        <div id="todo-proj-date-cont">
+            <div class="todo-project" data-date-todo-project></div>
+        </div>
     </div>
    </template>
 </body>
