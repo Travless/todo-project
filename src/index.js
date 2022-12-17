@@ -16,6 +16,8 @@ const toDoFormInput = document.querySelector('[data-todo-form-input]');
 const toDoFormDueDate = document.querySelector('[data-todo-form-duedate]');
 const toDoFormPriority = document.querySelector('[data-todo-form-priority]');
 const toDoForm = document.querySelector('[data-new-todo-form]');
+const toDoAdd = document.querySelector('[data-add-todo-btn]');
+const toDoCreate = document.querySelector('[data-todo-form-create]');
 
 // // Date Sort QSs
 const toDoDateToday = document.querySelector('[data-todos-today]');
@@ -78,6 +80,11 @@ projectForm.addEventListener('submit', e => {
     saveAndLoad();
 });
 
+toDoAdd.addEventListener('click', e => {
+    toDoCreate.hidden = false;
+    toDoAdd.hidden = true;
+})
+
 toDoForm.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -93,6 +100,7 @@ toDoForm.addEventListener('submit', e => {
     toDoFormInput.value = null;
     selectedProject.toDos.push(newToDo);
     toDoForm.hidden = true;
+    toDoAdd.hidden = false;
     saveAndLoad();
 })
 

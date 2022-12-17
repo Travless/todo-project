@@ -36,6 +36,9 @@ body {
 
 .selected-project {
     background-color: gray;
+    border-radius: 10px;
+    width: 10vw;
+    height: auto;
 }
 
 #proj-form-title-cont {
@@ -150,4 +153,128 @@ body {
 
 #timeframe-title {
     text-align: center;
+}
+
+#todo-cont {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    background-color: lawngreen;
+    align-items: center;
+}
+
+.todo-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #365aff;
+    width: 60vw;
+    border-radius: 10px 10px 0 0;
+}
+.todo-cont-title {
+    font-family: 'header';
+    font-size: 200%;
+    justify-self: center;
+    color: white;
+}
+#todo-layout {
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+    height: auto;
+    background-color: #6983b3;
+    border-top-width: 2px;
+    border-top-color: black;
+    border-top-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+}
+
+#complete-cont {
+    width: 5vw;
+    height: auto;
+    /* background-color: orange; */
+}
+
+#todo-name-layout-cont {
+    width: 40vw;
+    height: auto;
+    /* background: pink; */
+}
+
+#duedate-layout-cont {
+    width: 15vw;
+    height: auto;
+    /* background-color: purple; */
+}
+
+#complete-cont,
+#todo-name-layout-cont,
+#duedate-layout-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#complete,
+#todo-name-layout,
+#duedate-layout {
+    font-family: 'button-bold';
+    font-size: 120%;
+    color: white;
+}
+
+#current-tasks {
+    width: 60vw;
+    background-color: white;
+}
+
+.todo {
+    display: flex;
+    flex-direction: row;
+}
+
+.todo:hover {
+    transition: 0.4s;
+    box-shadow: 1px 1px 5px black;
+}
+
+.todo-check-cont {
+    width: 5vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-name-layout-cont {
+    width: 40vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.todo-duedate-cont {
+    width: 15vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-check-layout,
+.todo-name-layout,
+.todo-duedate-layout {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.todo-name-layout,
+.todo-duedate-layout {
+    font-family: 'button';
+    font-size: 110%;
+}
+
+.todo-name-layout {
+    padding-left: 1vw;
 }
