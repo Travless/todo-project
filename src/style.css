@@ -169,7 +169,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #365aff;
-    width: 60vw;
+    width: 65vw;
     border-radius: 10px 10px 0 0;
 }
 .todo-cont-title {
@@ -181,7 +181,7 @@ body {
 #todo-layout {
     display: flex;
     flex-direction: row;
-    width: 60vw;
+    width: 65vw;
     height: auto;
     background-color: #6983b3;
     border-top-width: 2px;
@@ -193,9 +193,8 @@ body {
 }
 
 #complete-cont {
-    width: 5vw;
+    width: 10vw;
     height: auto;
-    /* background-color: orange; */
 }
 
 #todo-name-layout-cont {
@@ -212,7 +211,8 @@ body {
 
 #complete-cont,
 #todo-name-layout-cont,
-#duedate-layout-cont {
+#duedate-layout-cont,
+#project-layout-cont {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -220,15 +220,18 @@ body {
 
 #complete,
 #todo-name-layout,
-#duedate-layout {
+#duedate-layout,
+#project-layout {
     font-family: 'button-bold';
     font-size: 120%;
     color: white;
 }
 
-#current-tasks {
-    width: 60vw;
+#current-todos {
+    width: 65vw;
     background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .todo {
@@ -242,10 +245,17 @@ body {
 }
 
 .todo-check-cont {
-    width: 5vw;
+    width: 10vw;
     height: auto;
     display: flex;
     justify-content: center;
+}
+
+.todo-layout {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .todo-name-layout-cont {
@@ -277,4 +287,5 @@ body {
 
 .todo-name-layout {
     padding-left: 1vw;
+    text-align: center;
 }

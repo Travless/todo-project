@@ -18,6 +18,8 @@ const toDoFormPriority = document.querySelector('[data-todo-form-priority]');
 const toDoForm = document.querySelector('[data-new-todo-form]');
 const toDoAdd = document.querySelector('[data-add-todo-btn]');
 const toDoCreate = document.querySelector('[data-todo-form-create]');
+const toDoLayoutProj = document.getElementById('project-layout')
+const toDosDateCurrent = document.querySelector('[data-current-date-todos]');
 
 // // Date Sort QSs
 const toDoDateToday = document.querySelector('[data-todos-today]');
@@ -42,8 +44,11 @@ let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_K
 // Current Project and To Dos Event Listeners
 
 projectCurrent.addEventListener('click', e => {
+    toDosDateCurrent.hidden = true;
+    toDosCurrent.hidden = false;
     toDoRemoveFinishedBtn.hidden = false;
     projectRemoveBtn.hidden = false;
+    toDoLayoutProj.hidden = true;
     if(e.target.tagName.toLowerCase() === 'li'){
         selectedProjectId = e.target.dataset.projectId;
         saveAndLoad();
@@ -107,8 +112,13 @@ toDoForm.addEventListener('submit', e => {
 // Date To Do Sort Event Listeners
 
 toDoDateToday.addEventListener('click', e => {
+    console.log(toDosDateCurrent);
+    toDosDateCurrent.hidden = false;
+    toDosCurrent.hidden = true;
+    toDosDateCurrent.innerHTML = '';
     toDosCurrent.innerHTML = '';
     hideButtonUI();
+    toDoLayoutProj.hidden = false;
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
     if (toDoHeaderTitle.innerText = toDoDateToday.innerText){
         toDoDateToday.classList.add('selected-project');
@@ -135,8 +145,11 @@ toDoDateToday.addEventListener('click', e => {
 });
 
 toDoDateThisWeek.addEventListener('click', e => {
+    toDosDateCurrent.hidden = false;
+    toDosCurrent.hidden = true;
     toDosCurrent.innerHTML = '';
-
+    toDosDateCurrent.innerHTML = '';
+    toDoLayoutProj.hidden = false;
     toDoHeaderTitle.innerText = toDoDateThisWeek.innerText;
     const toDosCont = []
     const thisWeekToDos = []
@@ -155,7 +168,11 @@ toDoDateThisWeek.addEventListener('click', e => {
 });
 
 toDoDateThisMonth.addEventListener('click', e => {
+    toDosDateCurrent.hidden = false;
+    toDosCurrent.hidden = true;
     toDosCurrent.innerHTML = '';
+    toDosDateCurrent.innerHTML = '';
+    toDoLayoutProj.hidden = false;
     toDoHeaderTitle.innerText = toDoDateThisMonth.innerText;
     const toDosCont = []
     const thisMonthToDos = []
@@ -266,7 +283,7 @@ const loadToDosByDate = (toDos) => {
             toDoDateElementProject.style.color = 'red';
         }
         dateLabel.append(toDo.name);
-        toDosCurrent.appendChild(toDoDateElement);
+        toDosDateCurrent.appendChild(toDoDateElement);
         dateCheckbox.addEventListener('click', e => {
             toDoRemoveFinishedBtn.hidden = false;
             toDoRemoveFinishedBtn.addEventListener('click', e => {
