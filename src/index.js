@@ -7,6 +7,7 @@ const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
+const selectedProj = document.getElementsByClassName('selected-project');
 
 // To DO QSs
 const toDoCont = document.getElementById('todo-cont');
@@ -124,11 +125,10 @@ toDoDateToday.addEventListener('click', e => {
     hideButtonUI();
     toDoLayoutProj.hidden = false;
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
-    if (toDoHeaderTitle.innerText = toDoDateToday.innerText){
-        toDoDateToday.classList.add('selected-project');
-        // classCheck(toDoDateToday);
-    }
-    console.log(toDoDateToday.classList.contains('selected-project'));
+    // if (toDoHeaderTitle.innerText = toDoDateToday.innerText){
+    //     toDoDateToday.classList.add('selected-project');
+    // }
+    // console.log(toDoDateToday.classList.contains('selected-project'));
     const projItems = document.getElementsByClassName('project-menu-item');
     console.log(projItems);
     const toDosCont = []

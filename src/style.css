@@ -1,3 +1,5 @@
+/* ----------------CUSTOM FONTS---------------- */
+
 @font-face {
     font-family: 'header';
     src: url(/src/fonts/NexaText-Trial-BlackItalic.ttf);
@@ -13,16 +15,18 @@
     src: url(/src/fonts/Nexa-Trial-ExtraBold.ttf);
 }
 
+
+/* ----------------GENERAL / BODY---------------- */
+
 body {
     display: flex;
     flex-direction: row;
     margin: 0px;
 }
 
-/* #page-cont {
-    display: flex;
-    flex-direction: row;
-}; */
+
+
+/* ----------------SIDEBAR---------------- */
 
 #sidebar {
     display: flex;
@@ -117,19 +121,15 @@ body {
     font-size: 160%;
     color: white;
 }
-/* .project-menu-item {
-} */
 
 .project-menu-item:hover,
 .today:hover,
 .this-week:hover,
 .this-month:hover {
-    /* filter: drop-shadow(1px 1px 1px black); */
     transition: 0.4s;
     background-color: #2b2b2b;
     color: white;
     box-shadow: 1px 1px 5px black;
-    /* width: 20vw; */
     height: auto;
     border-radius: 10px;
 }
@@ -158,9 +158,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 80vw;
-    background-color: lawngreen;
+    background-color: grey;
     align-items: center;
 }
+
+
+/* ----------------TODOS---------------- */
+
+/* TODO GENERAL */
 
 .todo-header {
     display: flex;
@@ -168,7 +173,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #365aff;
-    width: 65vw;
+    width: 75vw;
     border-radius: 10px 10px 0 0;
 }
 .todo-cont-title {
@@ -177,10 +182,13 @@ body {
     justify-self: center;
     color: white;
 }
+
+/* TODO LAYOUT BAR */
+
 #todo-layout {
     display: flex;
     flex-direction: row;
-    width: 65vw;
+    width: 75vw;
     height: auto;
     background-color: #6983b3;
     border-top-width: 2px;
@@ -203,9 +211,14 @@ body {
 }
 
 #duedate-layout-cont {
-    width: 15vw;
+    width: 10vw;
     height: auto;
     /* background-color: purple; */
+}
+
+#project-layout-cont {
+    width: 15vw;
+    height: auto;
 }
 
 #complete-cont,
@@ -226,12 +239,16 @@ body {
     color: white;
 }
 
+/* CURRENT TODOS */
+
 #current-todos {
-    width: 65vw;
+    width: 75vw;
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+/* TODO TEMPLATE */
 
 .todo {
     display: flex;
@@ -280,7 +297,10 @@ body {
 }
 
 .todo-name-layout,
-.todo-duedate-layout {
+.todo-duedate-layout,
+.todo-name-date-cont,
+.todo-duedate-date-cont,
+#todo-proj-date-cont {
     font-family: 'button';
     font-size: 110%;
 }
@@ -294,25 +314,29 @@ body {
     text-align: center;
 }
 
+/* TODO DATE TEMPLATE */
+
 #current-date-todos {
-    display: flex;
-    flex-direction: row;
+    width: 75vw;
+    background-color: white;
+    /* display: flex;
+    justify-content: space-around; */
 }
 
 .todos-date-cont {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 .todo-date {
     display: flex;
     flex-direction: row;
-    justify-content:space-around
+    justify-content:flex-start
 }
 
 .todo-check-date-cont {
-    width: 5vw;
+    width: 10vw;
     height: auto;
     display: flex;
     justify-content: center;
@@ -325,8 +349,8 @@ body {
     justify-content: space-around;
 } */
 
-.todo-name-layout-date-cont {
-    width: 35vw;
+.todo-name-date-cont {
+    width: 40vw;
     height: auto;
     display: flex;
     align-items: center;
@@ -340,16 +364,9 @@ body {
     justify-content: center;
 }
 
-.todo-proj-date-cont {
+#todo-proj-date-cont {
     width: 15vw;
     height: auto;
     display: flex;
     justify-content: center;
-}
-
-#current-date-todos {
-    width: 65vw;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
 }
