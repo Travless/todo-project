@@ -118,7 +118,6 @@ body {
     color: white;
 }
 /* .project-menu-item {
-
 } */
 
 .project-menu-item:hover,
@@ -263,6 +262,7 @@ body {
     height: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .todo-duedate-cont {
@@ -288,4 +288,25 @@ body {
 .todo-name-layout {
     padding-left: 1vw;
     text-align: center;
+}
+
+.todo-name-layout {
+    text-align: center;
+}
+
+#current-date-todos {
+    display: flex;
+    flex-direction: row;
+}
+
+.todos-date-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.todo-date {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around
 }

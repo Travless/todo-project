@@ -20,6 +20,7 @@ const toDoAdd = document.querySelector('[data-add-todo-btn]');
 const toDoCreate = document.querySelector('[data-todo-form-create]');
 const toDoLayoutProj = document.getElementById('project-layout')
 const toDosDateCurrent = document.querySelector('[data-current-date-todos]');
+const toDosDateCurrentCont = document.getElementById('current-date-todos')
 
 // // Date Sort QSs
 const toDoDateToday = document.querySelector('[data-todos-today]');
@@ -44,7 +45,9 @@ let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_K
 // Current Project and To Dos Event Listeners
 
 projectCurrent.addEventListener('click', e => {
+    toDosDateCurrent.innerHTML = '';
     toDosDateCurrent.hidden = true;
+    // toDosDateCurrentCont.hidden = true;
     toDosCurrent.hidden = false;
     toDoRemoveFinishedBtn.hidden = false;
     projectRemoveBtn.hidden = false;
@@ -86,6 +89,7 @@ projectForm.addEventListener('submit', e => {
 });
 
 toDoAdd.addEventListener('click', e => {
+    toDoForm.hidden = false;
     toDoCreate.hidden = false;
     toDoAdd.hidden = true;
 })
@@ -112,11 +116,11 @@ toDoForm.addEventListener('submit', e => {
 // Date To Do Sort Event Listeners
 
 toDoDateToday.addEventListener('click', e => {
+    toDosDateCurrent.innerHTML = '';
+    toDosCurrent.innerHTML = '';
     console.log(toDosDateCurrent);
     toDosDateCurrent.hidden = false;
     toDosCurrent.hidden = true;
-    toDosDateCurrent.innerHTML = '';
-    toDosCurrent.innerHTML = '';
     hideButtonUI();
     toDoLayoutProj.hidden = false;
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
@@ -140,7 +144,6 @@ toDoDateToday.addEventListener('click', e => {
         }
     })
     loadToDosByDate(todayToDos);
-    projItems.style.backgroundColor = '';
     
 });
 
