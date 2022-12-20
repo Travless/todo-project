@@ -310,3 +310,46 @@ body {
     flex-direction: row;
     justify-content:space-around
 }
+
+.todo-check-date-cont {
+    width: 5vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* .todo-name-date-layout {
+    width: ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} */
+
+.todo-name-layout-date-cont {
+    width: 35vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-duedate-date-cont {
+    width: 10vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-proj-date-cont {
+    width: 15vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#current-date-todos {
+    width: 65vw;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+}

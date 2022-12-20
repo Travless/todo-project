@@ -20,7 +20,7 @@ const toDoAdd = document.querySelector('[data-add-todo-btn]');
 const toDoCreate = document.querySelector('[data-todo-form-create]');
 const toDoLayoutProj = document.getElementById('project-layout')
 const toDosDateCurrent = document.querySelector('[data-current-date-todos]');
-const toDosDateCurrentCont = document.getElementById('current-date-todos')
+
 
 // // Date Sort QSs
 const toDoDateToday = document.querySelector('[data-todos-today]');
