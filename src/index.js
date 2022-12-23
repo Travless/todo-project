@@ -5,9 +5,10 @@ import { format, isThisWeek, isThisMonth, parseISO } from 'date-fns';
 //  Project QSs
 const projectNewProjBtn = document.querySelector('[data-project-new]');
 const projectFormInput = document.querySelector('[data-project-form-input]');
+const projectFormCancel = document.querySelector('[data-project-form-cancel]');
 const projectForm = document.querySelector('[data-project-form]');
 const projectCurrent = document.querySelector('[data-current-projects]');
-const selectedProj = document.getElementsByClassName('selected-project');
+// const selectedProj = document.getElementsByClassName('selected-project');
 
 // To DO QSs
 const toDoCont = document.getElementById('todo-cont');
@@ -21,6 +22,8 @@ const toDoAdd = document.querySelector('[data-add-todo-btn]');
 const toDoCreate = document.querySelector('[data-todo-form-create]');
 const toDoLayoutProj = document.getElementById('project-layout')
 const toDosDateCurrent = document.querySelector('[data-current-date-todos]');
+const toDoLayoutHeader = document.getElementById('todo-layout');
+const deleteContainer = document.querySelector('[data-delete-container]')
 
 
 // // Date Sort QSs
@@ -50,9 +53,11 @@ projectCurrent.addEventListener('click', e => {
     toDosDateCurrent.hidden = true;
     // toDosDateCurrentCont.hidden = true;
     toDosCurrent.hidden = false;
+    deleteContainer.hidden = false;
     toDoRemoveFinishedBtn.hidden = false;
     projectRemoveBtn.hidden = false;
     toDoLayoutProj.hidden = true;
+    toDoAdd.hidden = false;
     if(e.target.tagName.toLowerCase() === 'li'){
         selectedProjectId = e.target.dataset.projectId;
         saveAndLoad();
@@ -89,6 +94,10 @@ projectForm.addEventListener('submit', e => {
     saveAndLoad();
 });
 
+projectFormCancel.addEventListener('click', e => {
+    projectForm.hidden = true;
+})
+
 toDoAdd.addEventListener('click', e => {
     toDoForm.hidden = false;
     toDoCreate.hidden = false;
@@ -124,6 +133,7 @@ toDoDateToday.addEventListener('click', e => {
     toDosCurrent.hidden = true;
     hideButtonUI();
     toDoLayoutProj.hidden = false;
+    toDoAdd.hidden = true;
     toDoHeaderTitle.innerText = toDoDateToday.innerText;
     // if (toDoHeaderTitle.innerText = toDoDateToday.innerText){
     //     toDoDateToday.classList.add('selected-project');
@@ -224,6 +234,9 @@ const load = () => {
     let selectedProject = projects.find(project => project.id === selectedProjectId);
     if (selectedProjectId == null){
         toDoCont.style.display = 'none';
+        toDoCont.style.backgroundColor = 'grey';
+        deleteContainer.hidden = true;
+        toDoLayoutHeader.hidden = true;
     } else {  
         toDoCont.style.display = '';
         toDoHeaderTitle.innerText = selectedProject.name;
@@ -270,31 +283,35 @@ const loadToDo = (selectedProject) => {
 const loadToDosByDate = (toDos) => {
     toDos.forEach(toDo => {
         const toDoDateElement = document.importNode(toDoDateTemplate.content, true);
-        const dateCheckbox = toDoDateElement.querySelector('[data-date-todo-checkbox]');
+        const dateComplete = toDoDateElement.querySelector('[data-date-todo-complete]');
         const toDoDateElementDueDate = toDoDateElement.querySelector('[data-date-todo-date]');
         const toDoDateElementProject = toDoDateElement.querySelector('[data-date-todo-project]');
         toDoDateElementDueDate.id = toDo.id;
         toDoDateElementDueDate.innerText = toDo.dueDate;
-        dateCheckbox.id = toDo.id;
-        dateCheckbox.checked = toDo.complete;
+        dateComplete.id = toDo.id;
+        dateComplete.innerText = toDo.complete;
+        if (dateComplete.innerText === 'false'){
+            dateComplete.innerText = 'Incomplete';
+        }
         const dateLabel = toDoDateElement.querySelector('label');
         dateLabel.htmlFor = toDo.id;
         toDoDateElementProject.innerText = toDo.parent;
         if(toDo.priority === true){
             dateLabel.style.color = 'red';
             toDoDateElementDueDate.style.color = 'red';
-            toDoDateElementProject.style.color = 'red';
+            toDoDateElementProject.style.color = 'red'
+            dateComplete.style.color = 'red';
         }
         dateLabel.append(toDo.name);
         toDosDateCurrent.appendChild(toDoDateElement);
-        dateCheckbox.addEventListener('click', e => {
-            toDoRemoveFinishedBtn.hidden = false;
-            toDoRemoveFinishedBtn.addEventListener('click', e => {
-                const selectedProject = projects.find(project => project.id === selectedProjectId);
-                selectedProject.toDos = selectedProject.toDos.filter(toDo => !toDo.complete);
-                saveAndLoad();
-            })
-        })
+        // dateCheckbox.addEventListener('click', e => {
+        //     toDoRemoveFinishedBtn.hidden = false;
+        //     toDoRemoveFinishedBtn.addEventListener('click', e => {
+        //         const selectedProject = projects.find(project => project.id === selectedProjectId);
+        //         selectedProject.toDos = selectedProject.toDos.filter(toDo => !toDo.complete);
+        //         save();
+        //     })
+        // })
     })
 }
 
