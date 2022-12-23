@@ -17,10 +17,12 @@
                 <div id="proj-form-title-cont">
                     <div class="proj-form-title">My Projects</div>
                 </div>
-                <form action="" data-project-form hidden>
+                <form action="" id="new-proj-form" data-project-form hidden>
                     <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
-                    <button class="new-project-add-btn"data-project-form-add>Add</button>
-                    <button class="new-project-cancel" data-project-form-cancel>Cancel</button>
+                    <div class="proj-form-btn-cont">
+                        <button class="new-project-add-btn"data-project-form-add>Add</button>
+                        <button class="new-project-cancel" data-project-form-cancel>Cancel</button>
+                    </div>
                 </form>
                </div> 
             <div class="current-projects">
@@ -65,6 +67,10 @@
                     <div class="todos-date-cont" data-current-date-todos></div>
                 </div>
                 <button class="add-new-todo-btn" data-add-todo-btn>Add To-Do</button>
+                <div class="delete-container" data-delete-container>
+                    <button class="remove-finished-todos" data-remove-finished-todos>Remove Finished To-Dos</button>
+                    <button class="remove-project" data-remove-project>Remove Project</button>
+                </div>
                 <div class="new-todo-creater" data-todo-form-create hidden>
                     <form action="" data-new-todo-form>
                         <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
@@ -74,10 +80,6 @@
                         <label for="data-todo-form-priority">High Priority?</label>
                         <button class="new-todo-add-btn" data-todo-form-add>Add</button>
                     </form>
-                    <div class="delete-container">
-                        <button class="remove-finished-todos" data-remove-finished-todos>Remove Finished To-Dos</button>
-                        <button class="remove-project" data-remove-project>Remove Project</button>
-                    </div>
                 </div>
             <!-- </div> -->
         </div>
@@ -99,8 +101,9 @@
    </template>
    <template id="todo-date-template">
     <div class="todo-date">
-        <div class="todo-check-date-cont">
-            <input type="checkbox" data-date-todo-checkbox/>
+        <div class="todo-complete-date-cont">
+            <!-- <input type="checkbox" data-date-todo-checkbox/> -->
+            <div class="todo-complete-date" data-date-todo-complete></div>
         </div>
         <div class="todo-name-date-cont">
             <label class="todo-name-date">
