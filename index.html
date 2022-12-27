@@ -75,11 +75,11 @@
                 </div>
                 <div class="new-todo-creater" data-todo-form-create hidden>
                     <form action="" data-new-todo-form>
-                        <input class="new-todo" type="text" placeholder="New To-Do" data-todo-form-input>
-                        <label for="data-todo-form-duedate">Due Date</label>
-                        <input type="date" class="due-date" data-todo-form-duedate/>
+                        <input class="new-todo" id="todo-title-input" type="text" placeholder="New To-Do" data-todo-form-input>
+                        <label for="data-todo-form-duedate" id="todo-form-duedate-label">Due Date</label>
+                        <input type="date" class="due-date" id="todo-form-duedate" data-todo-form-duedate/>
                         <input type="checkbox" id="data-todo-form-priority" checked="on" data-todo-form-priority/>
-                        <label for="data-todo-form-priority">High Priority?</label>
+                        <label for="data-todo-form-priority" id="todo-form-priority-label">High Priority?</label>
                         <button class="new-todo-add-btn" data-todo-form-add>Add</button>
                     </form>
                 </div>
