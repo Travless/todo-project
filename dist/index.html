@@ -17,14 +17,16 @@
                 <div id="proj-form-title-cont">
                     <div class="proj-form-title">My Projects</div>
                 </div>
-                <form action="" id="new-proj-form" data-project-form hidden>
-                    <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
-                    <div class="proj-form-btn-cont">
-                        <button class="new-project-add-btn"data-project-form-add>Add</button>
-                        <button class="new-project-cancel" data-project-form-cancel>Cancel</button>
-                    </div>
-                </form>
-               </div> 
+                <div id="proj-form-cont" hidden>
+                    <form action="" id="new-proj-form" data-project-form>
+                        <input type="text" id="project-name" placeholder="Project Name" data-project-form-input/>
+                        <div class="proj-form-btn-cont">
+                            <button class="new-project-add-btn"data-project-form-add>Add</button>
+                            <button class="new-project-cancel" data-project-form-cancel>Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
             <div class="current-projects">
                 <ul class="projects" id="sidebar-current-proj" data-current-projects></ul>
             </div>
