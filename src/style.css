@@ -117,10 +117,24 @@ body {
 }
 
 #project-name {
-    width: 10px;
+    width: 12vw;
+    height: 4vh;
     margin-right: 0.5vw;
     border: none;
-    border: solid 1px black;
+    /* border: solid 1px black; */
+    border-radius: 20px;
+}
+
+input::placeholder {
+    font-family: 'button';
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+input {
+    text-align: center;
+    font-family: 'button';
+    font-size: 1.5rem;
 }
 
 .new-project-add-btn,
@@ -168,12 +182,6 @@ body {
     box-shadow: 1px 1px 5px black;
     height: auto;
     border-radius: 10px;
-}
-
-#project-name {
-    width: 10vw;
-    height: auto;
-    border-radius: 5px;
 }
 
 .sidebar-divider {
@@ -362,6 +370,11 @@ body {
     font-size: 130%
 }
 
+.add-new-todo-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /* TODO DATE TEMPLATE */
 
 #current-date-todos {
@@ -417,4 +430,41 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
+}
+
+
+/* TODO CREATION */
+
+#todo-form-duedate-label,
+#todo-title-input,
+#data-todo-form-priority {
+    margin: 10px;
+}
+
+#todo-form-duedate-label,
+#todo-form-priority-label {
+    font-family: 'button';
+    font-size: 1.5rem;
+}
+
+#todo-title-input,
+#todo-form-duedate {
+    width: 12vw;
+    height: 4vh;
+    border: none;
+    border-radius: 20px;
+}
+
+#todo-form-duedate {
+    font-size: 1.5rem;
+}
+
+.new-todo-add-btn {
+    background-color: #6b6b6b;
+    color: white;
+    font-family: 'button';
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    margin-left: 10px;
 }
